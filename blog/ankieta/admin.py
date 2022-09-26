@@ -1,3 +1,19 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Question, Choice, Answer
+
+class QuestionAdmin(admin.ModelAdmin):
+    fields = ['pub_date','question_text']
+  
+
+class ChoiceAdmin(admin.ModelAdmin):
+    list_display = ['get_question','choice_text','votes']
+    def get_question(self,obj):
+        return obj.question.question_text
+
+class AnswerAdmin(admin.ModelAdmin):
+    fields = ['answer_text','question']
+
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice,ChoiceAdmin)
+admin.site.register(Answer,AnswerAdmin)
