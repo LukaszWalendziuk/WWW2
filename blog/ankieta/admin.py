@@ -4,7 +4,7 @@ from .models import Question, Choice, Answer
 
 class QuestionAdmin(admin.ModelAdmin):
     fields = ['pub_date','question_text']
-  
+
 
 class ChoiceAdmin(admin.ModelAdmin):
     list_display = ['get_question','choice_text','votes']
